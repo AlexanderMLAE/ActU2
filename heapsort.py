@@ -38,6 +38,7 @@ with open("file.txt", "r") as f:
     arr = eval(content)
     print(type(arr), arr)
 
+arr = arr[:-9990]
 
 # ejecutar algoritmo
 
