@@ -1,5 +1,4 @@
 import time
-inicio = time.time()
 # Algoritmos de ordenamiento
 
 def heapify(A, n, i):
@@ -31,30 +30,39 @@ def heapsort(A):
         heapify(A, i, 0)
 
 # Usar misma lista predefinida
+
 arr = []
-
-with open("file.txt", "r") as f:
-    content = f.read()
-    arr = eval(content)
-    print(type(arr), arr)
-
-arr = arr[:-9900] # Reducir cantidad de elementos en la lista
-
+tiempos = []
+operaciones = []
 # ejecutar algoritmo
+for i in range(10):
+    # Obtener arreglo desde el archivo
+    with open("file.txt", "r") as f:
+        content = f.read()
+        arr = list(eval(content)) 
 
-heapsort(arr)
+    inicio = time.time()
 
-print ("Arreglo ordenado:")
-print (arr)
+    heapsort(arr)
+
+    # tiempo y operaciones
+    fin = time.time()
+    ops = heapify.count
+    heapify.count = 0
+
+    tiempo = fin - inicio
+    tiempos.append(tiempo)
+    operaciones.append(ops)
+    print(f"{i+1}: Tiempo: {tiempo}     Operaciones:  {ops}")
+
+tiemposAvg = sum(tiempos) / 10
+operacionesAvg = sum(operaciones) / 10
+
+flops = operacionesAvg/tiemposAvg
+
+print(f"Tiempo en promedio: {tiemposAvg} \n Promedio de operaciones: {operacionesAvg} \n FLOPS: {flops}")
 
 with open("heapResult.txt", "w", encoding="utf-8") as f:
     f.write(str(arr))
 
-# tiempo
 
-fin = time.time()
-
-operaciones = heapify.count
-
-tiempo = fin - inicio
-print("Tiempo: ", tiempo, "\n Operaciones: ", operaciones,)
