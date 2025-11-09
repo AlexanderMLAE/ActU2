@@ -53,14 +53,14 @@ for i in range(10):
     tiempo = fin - inicio
     tiempos.append(tiempo)
     operaciones.append(ops)
-    print(f"{i+1}: Tiempo: {tiempo}     Operaciones:  {ops}")
+    print(f"{i+1}: Tiempo: {tiempo}s")
 
 tiemposAvg = sum(tiempos) / 10
 operacionesAvg = sum(operaciones) / 10
 
 flops = operacionesAvg/tiemposAvg
 
-print(f"Tiempo en promedio: {tiemposAvg} \n Promedio de operaciones: {operacionesAvg} \n FLOPS: {flops}")
+print(f"Tiempo en promedio: {tiemposAvg}s \nPromedio de operaciones: {operacionesAvg} \nFLOPS: {flops:,}")
 
 with open("heapResult.txt", "w", encoding="utf-8") as f:
     f.write(str(arr))
