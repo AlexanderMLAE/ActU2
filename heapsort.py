@@ -8,10 +8,10 @@ def heapify(A, n, i):
     left = 2 * i + 1
     right = 2 * i + 2
 
-    if (left < n and A[i] < A[left]):
+    if (left < n and A[left] > A[max]):
         max = left
 
-    if (right < n and A[max] < A[right]):
+    if (right < n and A[right] > A[max]):
         max = right
 
     if (max != i):
@@ -22,7 +22,7 @@ heapify.count = 0
 def heapsort(A):
     n = len(A)
 
-    for i in range(n, 0, -1):
+    for i in range(n, -1, -1):
         heapify(A, n, i)
         
 
@@ -38,13 +38,13 @@ with open("file.txt", "r") as f:
     arr = eval(content)
     print(type(arr), arr)
 
-arr = arr[:-9990]
+arr = arr[:-9900] # Reducir cantidad de elementos en la lista
 
 # ejecutar algoritmo
 
 heapsort(arr)
 
-print ("Sorted array is")
+print ("Arreglo ordenado:")
 print (arr)
 
 with open("heapResult.txt", "w", encoding="utf-8") as f:
@@ -57,5 +57,4 @@ fin = time.time()
 operaciones = heapify.count
 
 tiempo = fin - inicio
-flops = operaciones/tiempo
-print("Tiempo: ", tiempo, "\n Operaciones: ", operaciones, "\n FLOPS: ", flops)
+print("Tiempo: ", tiempo, "\n Operaciones: ", operaciones,)
