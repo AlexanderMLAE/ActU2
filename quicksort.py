@@ -16,6 +16,8 @@ with open("file.txt", "r", encoding="utf-8") as f:
     contenido = f.read().strip()
     lista = ast.literal_eval(contenido)  # Convierte el texto a lista real
 
+    print(f"\n El Archivo contiene {len(lista):,} elementos:")
+
 repeticiones = 10
 tiempos = []
 
@@ -25,13 +27,16 @@ for _ in range(repeticiones):
     fin = time.time()
     tiempos.append(fin - inicio)
 
+    print(f"{_+1}: Tiempo de Ejecución: {tiempos[-1]:.8f} segundos")
+
 promedio_tiempo = sum(tiempos) / len(tiempos)
 N = len(lista)
 num_operaciones = N * (N - 1) / 2
 FLOPS = num_operaciones / promedio_tiempo
 
-print(f"\n Tiempo promedio: {promedio_tiempo:.6f} segundos")
-print(f"FLOPS aproximado: {FLOPS:,}")
+print(f"Tiempo promedio: {promedio_tiempo:.6f} segundos")
+print(f"\nTotal de Operaciones: {num_operaciones}")
+print(f"\nFLOPS aproximado: {FLOPS:,}")
 
 lista_ordenada = quicksort(lista)
 
