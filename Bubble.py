@@ -25,8 +25,6 @@ try:
         lista_ordenada, _, _ = bubble_sort(lista_ordenada[:cantidad_deseada])
         
         print(f"\n El Archivo contiene {len(lista_ordenada):,} elementos:")
-        print("\n Lista Ordenada con Bubble Sort:")
-        print([f"{x:.2f}" for x in lista_ordenada])
 
         tiempos, comps, intercs = [], [], []
 
@@ -64,3 +62,6 @@ print(f"Total de Operaciones: {operaciones:,}")
 #FLOPS
 Flops = operaciones / tiempo_promedio
 print(f"\nFLOPS: {Flops:,.4f}")
+
+with open("bubbleResult.txt", "w", encoding="utf-8") as f:
+    f.write(str(lista_ordenada))
